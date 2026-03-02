@@ -1,73 +1,76 @@
-# Welcome to your Lovable project
+# TECHSOL - Tech Solutions Provider
 
-## Project info
+A modern, professional corporate website for TECHSOL, built with React, TypeScript, Tailwind CSS, and Framer Motion.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## 🌐 Live Site
 
-## How can I edit this code?
+**Domain:** [techsol.com.pk](https://techsol.com.pk)
 
-There are several ways of editing your application.
+## 📄 Pages
 
-**Use Lovable**
+- **Home** — Hero section, service highlights, stats, and CTAs
+- **About** — Mission, vision, values, and company differentiators
+- **Services** — Categorized offerings (Software, IT Infrastructure, Security)
+- **Portfolio** — Filterable project gallery with case studies
+- **Contact** — Inquiry form, Google Maps embed, and contact details
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## 📞 Contact
 
-Changes made via Lovable will be committed automatically to this repo.
+- **Email:** Sales@techsol.com.pk
+- **Address:** Office#24, A-15, NASTP Rawalpindi
 
-**Use your preferred IDE**
+## 🛠 Tech Stack
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- **React 18** + **TypeScript**
+- **Vite** — Fast dev server & build
+- **Tailwind CSS** — Utility-first styling with custom design tokens
+- **shadcn/ui** — Accessible UI components
+- **Framer Motion** — Scroll animations & transitions
+- **Lucide React** — Icon system
+- **React Router** — Client-side routing
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 🚀 Getting Started
 
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
+```bash
+# Clone the repository
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
+# Navigate to the project
 cd <YOUR_PROJECT_NAME>
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start dev server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## 📦 Build
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```bash
+npm run build
+```
 
-**Use GitHub Codespaces**
+## 🎨 Design System
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+- **Primary (Navy):** HSL 228 55% 22%
+- **Accent (Amber):** HSL 35 87% 56%
+- **Headings:** Space Grotesk
+- **Body:** Inter
 
-## What technologies are used for this project?
+## 📁 Project Structure
 
-This project is built with:
+```
+src/
+├── assets/          # Images & logo
+├── components/      # Shared components (Header, Footer, Layout)
+│   └── ui/          # shadcn/ui components
+├── pages/           # Route pages
+├── hooks/           # Custom hooks
+├── lib/             # Utilities
+└── index.css        # Design tokens & global styles
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 📜 License
 
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+© 2026 TECHSOL. All rights reserved.
