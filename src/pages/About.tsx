@@ -1,13 +1,23 @@
 import { motion } from "framer-motion";
-import { CheckCircle, Target, Eye, Heart, Users, Award, Clock, Zap } from "lucide-react";
+import { CheckCircle, Target, Eye, Heart, Award, Shield, Lightbulb, Users, Handshake, Settings } from "lucide-react";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
 
 const values = [
-  { icon: Award, title: "Quality", desc: "We deliver excellence in every project, no matter the size." },
-  { icon: Users, title: "Client-Centric", desc: "Your success is our success. We prioritize your goals." },
-  { icon: Zap, title: "Innovation", desc: "We stay ahead with the latest technologies and trends." },
-  { icon: Clock, title: "Reliability", desc: "On-time delivery and 24/7 support you can count on." },
+  { icon: Award, title: "Technical Excellence", desc: "We bring deep expertise to every phase of every project." },
+  { icon: Shield, title: "Integrity", desc: "We operate with full transparency and honest communication at every level." },
+  { icon: CheckCircle, title: "Accountability", desc: "We own our projects from start to finish, with no handoffs and no gaps." },
+  { icon: Lightbulb, title: "Innovation", desc: "We continually evolve our methodologies to stay ahead of industry demands." },
+  { icon: Users, title: "Client Focus", desc: "Every decision we make is guided by the best interests of our clients." },
+];
+
+const differentiators = [
+  { title: "Single-Source Accountability", desc: "One point of contact, one contract, one team responsible — procurement through commissioning. No coordination risk." },
+  { title: "End-to-End Technical Expertise", desc: "Our team spans electrical, mechanical, instrumentation, controls, and IT — solving problems single-discipline teams often miss." },
+  { title: "Proven Project Delivery", desc: "Complex system integration projects delivered on time, within budget, and to specification across industrial, commercial, and infrastructure sectors." },
+  { title: "Compliance & Quality Standards", desc: "Full documentation, traceable processes, and rigorous quality control aligned with international engineering and safety standards." },
+  { title: "Long-Term Partnership Mindset", desc: "Post-project support, system expansions, and ongoing technical assistance — because our goal is your system's continued success." },
+  { title: "Adaptive & Industry-Agnostic", desc: "Oil & gas, manufacturing, utilities, telecommunications, or building infrastructure — we tailor our approach to your industry's demands." },
 ];
 
 const stagger = {
@@ -52,11 +62,11 @@ const About = () => (
         >
           <motion.span variants={fadeUp} className="text-amber text-sm font-semibold uppercase tracking-wider inline-block">About Us</motion.span>
           <motion.h1 variants={fadeUp} className="text-4xl md:text-5xl font-heading text-primary-foreground mt-2">
-            Your Technology Partner Since Day One
+            Who We Are
           </motion.h1>
           <motion.p variants={fadeUp} className="text-primary-foreground/70 mt-4 text-lg leading-relaxed">
-            TECHSOL is a Rawalpindi-based technology company delivering end-to-end IT solutions
-            to businesses across Pakistan.
+            TECHSOL is a professional system integration company committed to delivering technically sound,
+            operationally ready solutions across industries.
           </motion.p>
         </motion.div>
       </div>
@@ -73,16 +83,19 @@ const About = () => (
             variants={stagger}
           >
             <motion.div variants={fadeLeft}>
-              <SectionHeading subtitle="Our Story" title="Built on Trust, Driven by Innovation" centered={false} />
+              <SectionHeading subtitle="Our Story" title="Bridging Technology and Performance" centered={false} />
             </motion.div>
             <motion.p variants={fadeLeft} className="text-muted-foreground leading-relaxed mb-4">
-              Founded with a vision to bridge the technology gap for businesses in Pakistan, TECHSOL
-              has grown from a small IT services provider into a comprehensive technology solutions company.
+              Founded on a vision to bridge the gap between technology supply and real-world operational
+              performance, TECHSOL has grown into a trusted name in system integration. We understand that
+              modern infrastructure demands more than individual components — it requires intelligent,
+              seamlessly integrated systems that work together from day one.
             </motion.p>
             <motion.p variants={fadeLeft} className="text-muted-foreground leading-relaxed">
-              Our team of certified professionals brings expertise across web development, graphic design,
-              security systems, networking, and IT infrastructure. We've successfully delivered 150+
-              projects for clients across diverse industries.
+              Over the years, we have built a reputation for technical rigor, transparent project management,
+              and an unwavering commitment to client satisfaction. Our multidisciplinary team of engineers,
+              project managers, and technical specialists brings diverse expertise to every engagement —
+              ensuring that each system we deliver is designed, built, tested, and commissioned to the highest standards.
             </motion.p>
           </motion.div>
 
@@ -97,26 +110,26 @@ const About = () => (
               <div className="absolute -top-6 -right-6 w-20 h-20 bg-accent/10 rounded-full blur-xl group-hover:bg-accent/20 transition-colors" />
               <Target className="w-8 h-8 text-amber mb-3 relative" />
               <h3 className="font-heading text-lg mb-2 relative">Mission</h3>
-              <p className="text-sm text-primary-foreground/70 relative">Empower businesses with reliable, innovative technology solutions.</p>
+              <p className="text-sm text-primary-foreground/70 relative">To deliver complete, integrated systems through meticulous planning and full-cycle accountability.</p>
             </motion.div>
             <motion.div variants={scaleIn} whileHover={{ y: -6, transition: { duration: 0.3 } }} className="bg-accent rounded-xl p-6 text-accent-foreground relative overflow-hidden group">
               <div className="absolute -top-6 -right-6 w-20 h-20 bg-primary/10 rounded-full blur-xl group-hover:bg-primary/20 transition-colors" />
               <Eye className="w-8 h-8 mb-3 relative" />
               <h3 className="font-heading text-lg mb-2 relative">Vision</h3>
-              <p className="text-sm text-accent-foreground/80 relative">Be Pakistan's most trusted technology partner.</p>
+              <p className="text-sm text-accent-foreground/80 relative">To be the most trusted system integration partner — recognized for engineering excellence.</p>
             </motion.div>
             <motion.div variants={fadeUp} whileHover={{ y: -6, transition: { duration: 0.3 } }} className="col-span-2 bg-secondary rounded-xl p-6 relative overflow-hidden group">
               <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-accent/5 rounded-full blur-xl group-hover:bg-accent/10 transition-colors" />
               <Heart className="w-8 h-8 text-accent mb-3 relative" />
               <h3 className="font-heading text-lg mb-2 text-foreground relative">Core Values</h3>
-              <p className="text-sm text-muted-foreground relative">Integrity, Innovation, Excellence, and Customer-First approach in everything we do.</p>
+              <p className="text-sm text-muted-foreground relative">Technical Excellence, Integrity, Accountability, Innovation, and Client Focus in everything we do.</p>
             </motion.div>
           </motion.div>
         </div>
       </div>
     </section>
 
-    {/* Why Choose Us */}
+    {/* Values */}
     <section className="section-padding bg-secondary overflow-hidden">
       <div className="container">
         <motion.div
@@ -125,14 +138,14 @@ const About = () => (
           viewport={{ once: true, margin: "-60px" }}
           variants={fadeUp}
         >
-          <SectionHeading subtitle="Why TECHSOL" title="What Sets Us Apart" />
+          <SectionHeading subtitle="Our Values" title="What Drives Us" />
         </motion.div>
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-40px" }}
           variants={stagger}
-          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6"
         >
           {values.map((v) => (
             <motion.div
@@ -152,40 +165,40 @@ const About = () => (
       </div>
     </section>
 
-    {/* Differentiators */}
+    {/* Why TECHSOL */}
     <section className="section-padding bg-background overflow-hidden">
-      <div className="container max-w-3xl">
+      <div className="container">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
           variants={fadeUp}
         >
-          <SectionHeading subtitle="Advantages" title="Why Businesses Choose TECHSOL" />
+          <SectionHeading
+            subtitle="Our Edge"
+            title="Why TECHSOL"
+            description="In a market full of suppliers and contractors, TECHSOL stands apart as a true system integration partner."
+          />
         </motion.div>
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-40px" }}
           variants={stagger}
-          className="space-y-4"
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto"
         >
-          {[
-            "Comprehensive service portfolio — from software to hardware",
-            "Local team with deep understanding of Pakistan's business landscape",
-            "Transparent pricing with no hidden costs",
-            "Post-project support and maintenance included",
-            "Proven track record with 150+ successful projects",
-            "Certified professionals with industry expertise",
-          ].map((item) => (
+          {differentiators.map((d, i) => (
             <motion.div
-              key={item}
-              variants={fadeLeft}
-              whileHover={{ x: 8, transition: { duration: 0.2 } }}
-              className="flex items-start gap-3 bg-card p-4 rounded-lg border border-border hover:border-accent/40 hover:shadow-md transition-all duration-300 cursor-default"
+              key={d.title}
+              variants={scaleIn}
+              whileHover={{ y: -6, transition: { duration: 0.3 } }}
+              className="bg-card rounded-xl p-6 border border-border hover:border-accent/40 hover:shadow-xl hover:shadow-accent/5 transition-all duration-300 group"
             >
-              <CheckCircle className="w-5 h-5 text-accent mt-0.5 shrink-0" />
-              <span className="text-foreground text-sm">{item}</span>
+              <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent transition-all duration-300">
+                <span className="text-accent group-hover:text-accent-foreground font-heading font-bold transition-colors duration-300">{i + 1}</span>
+              </div>
+              <h3 className="font-heading text-foreground mb-2">{d.title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">{d.desc}</p>
             </motion.div>
           ))}
         </motion.div>

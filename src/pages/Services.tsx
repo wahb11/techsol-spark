@@ -1,35 +1,76 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Code, Palette, Shield, Network, Server, Monitor, Smartphone, Database, Wifi, Camera, HardDrive, ArrowRight } from "lucide-react";
+import { ShoppingCart, Wrench, Cpu, FlaskConical, Rocket, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
 
-const categories = [
+const services = [
   {
-    name: "Software Solutions",
-    services: [
-      { icon: Code, title: "Web Development", desc: "Custom websites, e-commerce platforms, and web applications using modern frameworks and technologies." },
-      { icon: Smartphone, title: "App Development", desc: "Native and cross-platform mobile applications for iOS and Android devices." },
-      { icon: Palette, title: "Graphic Design", desc: "Logo design, brand identity, UI/UX design, marketing materials, and social media graphics." },
-      { icon: Database, title: "Software Solutions", desc: "Custom ERP, CRM, and business management software tailored to your needs." },
+    icon: ShoppingCart,
+    title: "Procurement",
+    headline: "The Right Components. The Right Source. The Right Price.",
+    body: "Effective system integration begins with intelligent procurement. TECHSOL manages the full sourcing process — identifying, evaluating, and procuring equipment and components that meet your technical specifications, quality standards, and budgetary requirements.",
+    capabilities: [
+      "Vendor identification and qualification",
+      "Technical specification review and compliance",
+      "Cost benchmarking and negotiation",
+      "Import/export coordination and logistics management",
+      "Supply chain risk management",
     ],
   },
   {
-    name: "IT Infrastructure",
-    services: [
-      { icon: Server, title: "Server Management", desc: "Server setup, configuration, maintenance, and cloud migration services." },
-      { icon: Network, title: "Networking", desc: "Enterprise networking, structured cabling, router/switch configuration, and LAN/WAN setup." },
-      { icon: Wifi, title: "Wireless Solutions", desc: "Wi-Fi network design, access point installation, and wireless coverage optimization." },
-      { icon: HardDrive, title: "Hardware Supply", desc: "IT hardware procurement, computer assembly, and equipment supply for businesses." },
+    icon: Wrench,
+    title: "Installation",
+    headline: "Precision Installation. Built to Last.",
+    body: "Our installation teams are trained to the highest technical standards and operate with disciplined attention to detail. From mechanical assembly to electrical and network infrastructure, TECHSOL executes installations that are safe, structured, and aligned with manufacturer specifications.",
+    capabilities: [
+      "Mechanical and electrical installation",
+      "Control systems and instrumentation setup",
+      "Network and communication infrastructure",
+      "Structured cabling and panel wiring",
+      "Site supervision and HSE compliance",
     ],
   },
   {
-    name: "Security Solutions",
-    services: [
-      { icon: Camera, title: "CCTV Installation", desc: "HD surveillance cameras, DVR/NVR systems, remote monitoring, and complete security solutions." },
-      { icon: Shield, title: "Access Control", desc: "Biometric systems, card readers, visitor management, and building security integration." },
-      { icon: Monitor, title: "IT Security", desc: "Firewall setup, antivirus deployment, data backup, and cybersecurity consulting." },
+    icon: Cpu,
+    title: "System Integration",
+    headline: "Making Every Component Work as One.",
+    body: "We bring together hardware, software, communication protocols, and control systems into a unified, fully functional whole. Our engineers are experienced in integrating systems across diverse technologies and platforms — ensuring seamless data flow, operational coherence, and optimal performance.",
+    capabilities: [
+      "PLC, SCADA, and DCS integration",
+      "HMI and operator interface configuration",
+      "Third-party system and protocol integration",
+      "IT/OT convergence and network integration",
+      "Custom integration design and engineering",
+    ],
+  },
+  {
+    icon: FlaskConical,
+    title: "Testing",
+    headline: "No Assumptions. Only Verified Performance.",
+    body: "TECHSOL conducts systematic, documented testing at every level — component, subsystem, and full system — to identify and resolve any issues before they impact operations. Our testing protocols are aligned with international standards and client-specific requirements.",
+    capabilities: [
+      "Factory Acceptance Testing (FAT)",
+      "Site Acceptance Testing (SAT)",
+      "Functional and performance verification",
+      "Loop checks and interlock testing",
+      "Fault simulation and failure mode analysis",
+      "Full test documentation and reporting",
+    ],
+  },
+  {
+    icon: Rocket,
+    title: "Commissioning",
+    headline: "From Installation to Full Operation — Seamlessly.",
+    body: "TECHSOL's commissioning engineers ensure that every installed and integrated system is started up, calibrated, and validated under real operating conditions — with a structured handover process that gives your operations team full confidence.",
+    capabilities: [
+      "Pre-commissioning inspections and checks",
+      "System startup and operational validation",
+      "Performance tuning and calibration",
+      "Operator training and knowledge transfer",
+      "As-built documentation and O&M manuals",
+      "Post-commissioning support",
     ],
   },
 ];
@@ -42,6 +83,16 @@ const stagger = {
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
+};
+
+const fadeLeft = {
+  hidden: { opacity: 0, x: -50 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
+};
+
+const fadeRight = {
+  hidden: { opacity: 0, x: 50 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
 };
 
 const scaleIn = {
@@ -66,51 +117,66 @@ const Services = () => (
         >
           <motion.span variants={fadeUp} className="text-amber text-sm font-semibold uppercase tracking-wider inline-block">Our Services</motion.span>
           <motion.h1 variants={fadeUp} className="text-4xl md:text-5xl font-heading text-primary-foreground mt-2">
-            Comprehensive Tech Solutions
+            Integrated Service Model
           </motion.h1>
           <motion.p variants={fadeUp} className="text-primary-foreground/70 mt-4 text-lg">
-            From software development to physical security, we cover all your technology needs under one roof.
+            Covering every phase of a system's lifecycle — from sourcing the right components to ensuring the final system is tested, verified, and fully operational.
           </motion.p>
         </motion.div>
       </div>
     </section>
 
-    {categories.map((cat, catIdx) => (
-      <section key={cat.name} className={`section-padding overflow-hidden ${catIdx % 2 === 0 ? "bg-background" : "bg-secondary"}`}>
+    {services.map((s, idx) => (
+      <section key={s.title} className={`section-padding overflow-hidden ${idx % 2 === 0 ? "bg-background" : "bg-secondary"}`}>
         <div className="container">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-            variants={fadeUp}
-          >
-            <SectionHeading subtitle={`Category ${catIdx + 1}`} title={cat.name} />
-          </motion.div>
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-40px" }}
-            variants={stagger}
-            className="grid sm:grid-cols-2 lg:grid-cols-2 gap-6 max-w-4xl mx-auto"
-          >
-            {cat.services.map((s) => (
-              <motion.div
-                key={s.title}
-                variants={scaleIn}
-                whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                className="bg-card rounded-xl p-6 border border-border hover:border-accent/50 hover:shadow-xl hover:shadow-accent/5 transition-all duration-300 group"
-              >
-                <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent group-hover:shadow-lg group-hover:shadow-accent/20 transition-all duration-300">
-                  <s.icon className="w-6 h-6 text-accent group-hover:text-accent-foreground transition-colors duration-300" />
+          <div className={`grid md:grid-cols-2 gap-12 items-start ${idx % 2 !== 0 ? "md:direction-rtl" : ""}`}>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-60px" }}
+              variants={stagger}
+              className={idx % 2 !== 0 ? "md:order-2" : ""}
+            >
+              <motion.div variants={idx % 2 === 0 ? fadeLeft : fadeRight} className="flex items-center gap-3 mb-4">
+                <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center">
+                  <s.icon className="w-6 h-6 text-accent" />
                 </div>
-                <h3 className="text-lg font-heading mb-2 text-foreground">{s.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-4">{s.desc}</p>
-                <Link to="/contact" className="text-accent text-sm font-semibold inline-flex items-center gap-1 hover:gap-2 transition-all group/link">
-                  Inquire Now <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
-                </Link>
+                <span className="text-accent text-sm font-semibold uppercase tracking-wider">Service {idx + 1}</span>
               </motion.div>
-            ))}
-          </motion.div>
+              <motion.h2 variants={idx % 2 === 0 ? fadeLeft : fadeRight} className="text-3xl font-heading text-foreground mb-3">
+                {s.title}
+              </motion.h2>
+              <motion.p variants={idx % 2 === 0 ? fadeLeft : fadeRight} className="text-accent font-semibold text-lg mb-4">
+                {s.headline}
+              </motion.p>
+              <motion.p variants={idx % 2 === 0 ? fadeLeft : fadeRight} className="text-muted-foreground leading-relaxed">
+                {s.body}
+              </motion.p>
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-60px" }}
+              variants={stagger}
+              className={idx % 2 !== 0 ? "md:order-1" : ""}
+            >
+              <motion.h3 variants={fadeUp} className="font-heading text-foreground mb-4">Key Capabilities</motion.h3>
+              <div className="space-y-3">
+                {s.capabilities.map((cap) => (
+                  <motion.div
+                    key={cap}
+                    variants={fadeUp}
+                    whileHover={{ x: 6, transition: { duration: 0.2 } }}
+                    className="flex items-start gap-3 bg-card p-4 rounded-lg border border-border hover:border-accent/40 hover:shadow-md transition-all duration-300"
+                  >
+                    <ArrowRight className="w-4 h-4 text-accent mt-0.5 shrink-0" />
+                    <span className="text-foreground text-sm">{cap}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
     ))}
@@ -129,7 +195,7 @@ const Services = () => (
         >
           <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-heading text-primary-foreground mb-4">Need a Custom Solution?</motion.h2>
           <motion.p variants={fadeUp} className="text-primary-foreground/70 max-w-xl mx-auto mb-8">
-            Don't see exactly what you need? We create tailored technology packages for every business.
+            Every project is unique. Let's discuss how TECHSOL can deliver a tailored integration solution for your requirements.
           </motion.p>
           <motion.div variants={scaleIn}>
             <Link to="/contact">

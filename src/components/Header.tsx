@@ -22,15 +22,18 @@ const Header = () => {
       <div className="bg-primary text-primary-foreground">
         <div className="container flex items-center justify-between py-2 text-sm">
           <div className="flex items-center gap-4">
-            <a href="mailto:Sales@techsol.com.pk" className="flex items-center gap-1.5 hover:text-amber transition-colors">
+            <a href="mailto:info@techsol.com" className="flex items-center gap-1.5 hover:text-amber transition-colors">
               <Mail className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Sales@techsol.com.pk</span>
+              <span className="hidden sm:inline">info@techsol.com</span>
             </a>
             <span className="hidden md:flex items-center gap-1.5">
               <MapPin className="w-3.5 h-3.5" />
               Office#24, A-15, NASTP Rawalpindi
             </span>
           </div>
+          <span className="hidden lg:inline text-primary-foreground/60 text-xs">
+            System Integration | Procurement | Installation | Commissioning
+          </span>
         </div>
       </div>
 
@@ -57,7 +60,7 @@ const Header = () => {
           ))}
           <Link to="/contact">
             <Button className="ml-3 bg-accent text-accent-foreground hover:bg-amber-dark font-semibold">
-              Get a Quote
+              Get a Consultation
             </Button>
           </Link>
         </nav>
@@ -89,7 +92,7 @@ const Header = () => {
           ))}
           <Link to="/contact" onClick={() => setMobileOpen(false)}>
             <Button className="w-full mt-3 bg-accent text-accent-foreground hover:bg-amber-dark">
-              Get a Quote
+              Get a Consultation
             </Button>
           </Link>
         </nav>

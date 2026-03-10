@@ -10,8 +10,7 @@ const Footer = () => (
         <div>
           <img src={logo} alt="TECHSOL" className="h-14 w-auto mb-4 bg-card rounded p-1" />
           <p className="text-primary-foreground/70 text-sm leading-relaxed">
-            Your trusted technology partner delivering innovative IT solutions, web development,
-            security systems, and infrastructure services.
+            Professional system integration company delivering end-to-end solutions — from procurement to commissioning — with precision and accountability.
           </p>
         </div>
 
@@ -36,11 +35,11 @@ const Footer = () => (
         <div>
           <h4 className="text-lg font-heading mb-4 text-amber">Services</h4>
           <ul className="space-y-2 text-sm text-primary-foreground/70">
-            <li>Web & App Development</li>
-            <li>Graphic Design</li>
-            <li>CCTV & Security</li>
-            <li>Networking Solutions</li>
-            <li>IT Infrastructure</li>
+            <li>Procurement</li>
+            <li>Installation</li>
+            <li>System Integration</li>
+            <li>Testing</li>
+            <li>Commissioning</li>
           </ul>
         </div>
 
@@ -48,9 +47,9 @@ const Footer = () => (
         <div>
           <h4 className="text-lg font-heading mb-4 text-amber">Contact Us</h4>
           <div className="space-y-3 text-sm">
-            <a href="mailto:Sales@techsol.com.pk" className="flex items-start gap-2 text-primary-foreground/70 hover:text-amber transition-colors">
+            <a href="mailto:info@techsol.com" className="flex items-start gap-2 text-primary-foreground/70 hover:text-amber transition-colors">
               <Mail className="w-4 h-4 mt-0.5 shrink-0" />
-              Sales@techsol.com.pk
+              info@techsol.com
             </a>
             <div className="flex items-start gap-2 text-primary-foreground/70">
               <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
@@ -70,7 +69,7 @@ const Footer = () => (
 
     <div className="border-t border-navy-light">
       <div className="container py-4 text-center text-sm text-primary-foreground/50">
-        © {new Date().getFullYear()} TECHSOL. All rights reserved.
+        © {new Date().getFullYear()} TECHSOL. All rights reserved. — Procure. Install. Integrate. Test. Commission. Deliver.
       </div>
     </div>
   </footer>
