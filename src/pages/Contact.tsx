@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, MapPin, Phone, Send } from "lucide-react";
+import { Mail, MapPin, Phone, Send, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -8,12 +8,12 @@ import { useToast } from "@/hooks/use-toast";
 import Layout from "@/components/Layout";
 
 const serviceOptions = [
-  "Web Development",
-  "Graphic Design",
-  "CCTV & Security",
-  "Networking",
-  "IT Infrastructure",
-  "IT Consultation",
+  "Procurement",
+  "Installation",
+  "System Integration",
+  "Testing",
+  "Commissioning",
+  "Full Project Scope",
   "Other",
 ];
 
@@ -39,7 +39,7 @@ const scaleIn = {
 
 const Contact = () => {
   const { toast } = useToast();
-  const [form, setForm] = useState({ name: "", email: "", phone: "", service: "", message: "" });
+  const [form, setForm] = useState({ name: "", company: "", email: "", phone: "", service: "", message: "" });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -47,11 +47,11 @@ const Contact = () => {
       toast({ title: "Please fill in required fields", variant: "destructive" });
       return;
     }
-    const subject = encodeURIComponent(`Inquiry: ${form.service || "General"} — ${form.name}`);
+    const subject = encodeURIComponent(`Inquiry: ${form.service || "General"} — ${form.name} (${form.company})`);
     const body = encodeURIComponent(
-      `Name: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}\nService: ${form.service}\n\nMessage:\n${form.message}`
+      `Name: ${form.name}\nCompany: ${form.company}\nEmail: ${form.email}\nPhone: ${form.phone}\nProject Type: ${form.service}\n\nMessage:\n${form.message}`
     );
-    window.location.href = `mailto:Sales@techsol.com.pk?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:info@techsol.com?subject=${subject}&body=${body}`;
     toast({ title: "Opening your email client...", description: "Your inquiry is being prepared." });
   };
 
@@ -70,9 +70,9 @@ const Contact = () => {
             className="max-w-2xl"
           >
             <motion.span variants={fadeUp} className="text-amber text-sm font-semibold uppercase tracking-wider inline-block">Contact Us</motion.span>
-            <motion.h1 variants={fadeUp} className="text-4xl md:text-5xl font-heading text-primary-foreground mt-2">Let's Build Something Great</motion.h1>
+            <motion.h1 variants={fadeUp} className="text-4xl md:text-5xl font-heading text-primary-foreground mt-2">Let's Build Something Together</motion.h1>
             <motion.p variants={fadeUp} className="text-primary-foreground/70 mt-4 text-lg">
-              Have a project in mind? Get in touch and let's discuss how we can help.
+              Have a project in mind? Looking for a reliable integration partner? Our team is ready to listen, assess, and propose the right solution.
             </motion.p>
           </motion.div>
         </div>
@@ -90,9 +90,10 @@ const Contact = () => {
               className="space-y-6"
             >
               {[
-                { icon: Mail, title: "Email Us", content: "Sales@techsol.com.pk", href: "mailto:Sales@techsol.com.pk" },
+                { icon: Mail, title: "Email Us", content: "info@techsol.com", href: "mailto:info@techsol.com" },
                 { icon: MapPin, title: "Visit Us", content: "Office#24, A-15, NASTP Rawalpindi" },
                 { icon: Phone, title: "Call Us", content: "Contact us via email for phone details" },
+                { icon: Clock, title: "Business Hours", content: "Mon–Fri: 8:00 AM – 6:00 PM\nSat: 9:00 AM – 1:00 PM" },
               ].map((item) => (
                 <motion.div
                   key={item.title}
@@ -107,7 +108,7 @@ const Contact = () => {
                       {item.content}
                     </a>
                   ) : (
-                    <p className="text-muted-foreground text-sm">{item.content}</p>
+                    <p className="text-muted-foreground text-sm whitespace-pre-line">{item.content}</p>
                   )}
                 </motion.div>
               ))}
@@ -124,7 +125,7 @@ const Contact = () => {
               <form onSubmit={handleSubmit} className="bg-card rounded-xl p-6 md:p-8 border border-border space-y-5 hover:shadow-lg transition-shadow duration-300">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="text-sm font-medium text-foreground mb-1 block">Name *</label>
+                    <label className="text-sm font-medium text-foreground mb-1 block">Full Name *</label>
                     <Input
                       value={form.name}
                       onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -133,7 +134,18 @@ const Contact = () => {
                     />
                   </div>
                   <div>
-                    <label className="text-sm font-medium text-foreground mb-1 block">Email *</label>
+                    <label className="text-sm font-medium text-foreground mb-1 block">Company Name</label>
+                    <Input
+                      value={form.company}
+                      onChange={(e) => setForm({ ...form, company: e.target.value })}
+                      placeholder="Your company"
+                      maxLength={100}
+                    />
+                  </div>
+                </div>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-sm font-medium text-foreground mb-1 block">Email Address *</label>
                     <Input
                       type="email"
                       value={form.email}
@@ -142,10 +154,8 @@ const Contact = () => {
                       maxLength={255}
                     />
                   </div>
-                </div>
-                <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="text-sm font-medium text-foreground mb-1 block">Phone</label>
+                    <label className="text-sm font-medium text-foreground mb-1 block">Phone Number</label>
                     <Input
                       value={form.phone}
                       onChange={(e) => setForm({ ...form, phone: e.target.value })}
@@ -153,55 +163,46 @@ const Contact = () => {
                       maxLength={20}
                     />
                   </div>
-                  <div>
-                    <label className="text-sm font-medium text-foreground mb-1 block">Service of Interest</label>
-                    <select
-                      value={form.service}
-                      onChange={(e) => setForm({ ...form, service: e.target.value })}
-                      className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring text-foreground"
-                    >
-                      <option value="">Select a service</option>
-                      {serviceOptions.map((s) => (
-                        <option key={s} value={s}>{s}</option>
-                      ))}
-                    </select>
-                  </div>
                 </div>
                 <div>
-                  <label className="text-sm font-medium text-foreground mb-1 block">Message *</label>
+                  <label className="text-sm font-medium text-foreground mb-1 block">Project Type / Industry</label>
+                  <select
+                    value={form.service}
+                    onChange={(e) => setForm({ ...form, service: e.target.value })}
+                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring text-foreground"
+                  >
+                    <option value="">Select a service</option>
+                    {serviceOptions.map((s) => (
+                      <option key={s} value={s}>{s}</option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label className="text-sm font-medium text-foreground mb-1 block">Message / Project Brief *</label>
                   <Textarea
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    placeholder="Tell us about your project..."
+                    placeholder="Tell us about your project requirements..."
                     rows={5}
-                    maxLength={1000}
+                    maxLength={2000}
                   />
                 </div>
                 <Button type="submit" size="lg" className="bg-accent text-accent-foreground hover:bg-amber-dark font-semibold w-full sm:w-auto px-10 glow-amber group">
-                  <Send className="w-4 h-4 mr-2" /> Send Inquiry
+                  <Send className="w-4 h-4 mr-2" /> Submit Inquiry
                 </Button>
               </form>
             </motion.div>
           </div>
 
-          {/* Map */}
+          {/* Closing */}
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-60px" }}
             variants={fadeUp}
-            className="mt-12 rounded-xl overflow-hidden border border-border h-80 hover:shadow-lg transition-shadow duration-300"
+            className="mt-12 text-center"
           >
-            <iframe
-              title="TECHSOL Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3321.5!2d73.0479!3d33.5651!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDMzJzU0LjQiTiA3M8KwMDInNTIuNCJF!5e0!3m2!1sen!2s!4v1234567890"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
+            <p className="text-muted-foreground italic">TECHSOL — Procure. Install. Integrate. Test. Commission. Deliver.</p>
           </motion.div>
         </div>
       </section>

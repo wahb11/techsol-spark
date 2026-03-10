@@ -4,15 +4,15 @@ import { ExternalLink } from "lucide-react";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
 
-const categories = ["All", "Web Development", "Graphic Design", "CCTV & Security", "Networking"];
+const categories = ["All", "System Integration", "Installation", "Procurement", "Commissioning"];
 
 const projects = [
-  { title: "Corporate E-Commerce Platform", category: "Web Development", challenge: "Outdated legacy system with poor UX", solution: "Modern responsive web app with integrated payment gateway", outcome: "200% increase in online sales" },
-  { title: "Brand Identity for FinTech Startup", category: "Graphic Design", challenge: "New startup with no visual identity", solution: "Complete brand kit including logo, business cards, and marketing collateral", outcome: "Strong brand recognition from launch" },
-  { title: "Hospital Surveillance System", category: "CCTV & Security", challenge: "Large campus with blind spots in security coverage", solution: "120+ HD cameras with centralized NVR monitoring system", outcome: "100% campus coverage with 24/7 recording" },
-  { title: "Office Network Infrastructure", category: "Networking", challenge: "Slow connectivity across a 3-floor office building", solution: "Structured cabling, managed switches, and enterprise Wi-Fi deployment", outcome: "10x improvement in network speed" },
-  { title: "School Management System", category: "Web Development", challenge: "Manual record-keeping causing errors and delays", solution: "Custom web portal for student, teacher, and admin management", outcome: "80% reduction in administrative workload" },
-  { title: "Restaurant Social Media Campaign", category: "Graphic Design", challenge: "Low engagement on social media platforms", solution: "Branded content calendar with custom graphics and promotional designs", outcome: "3x increase in social media engagement" },
+  { title: "Industrial Plant Control System", category: "System Integration", challenge: "Legacy control systems with no centralized monitoring", solution: "Full PLC/SCADA integration with HMI operator interfaces and remote monitoring", outcome: "40% reduction in downtime with real-time visibility" },
+  { title: "Commercial Building Infrastructure", category: "Installation", challenge: "New 5-story office complex requiring complete electrical and network setup", solution: "Structured cabling, panel wiring, access control, and communication infrastructure", outcome: "Delivered ahead of schedule with full HSE compliance" },
+  { title: "Manufacturing Equipment Procurement", category: "Procurement", challenge: "Sourcing specialized machinery across multiple international vendors", solution: "Vendor qualification, cost benchmarking, and logistics coordination across 8 countries", outcome: "15% cost savings with zero supply chain delays" },
+  { title: "Water Treatment Facility Commissioning", category: "Commissioning", challenge: "Complex multi-system startup with strict regulatory requirements", solution: "Phased pre-commissioning, SAT, performance validation, and operator training", outcome: "First-pass certification with full documentation handover" },
+  { title: "Telecom Network Integration", category: "System Integration", challenge: "Multiple vendor equipment requiring unified management", solution: "IT/OT convergence, protocol integration, and custom network architecture", outcome: "Seamless data flow across 200+ endpoints" },
+  { title: "Power Substation Installation", category: "Installation", challenge: "Greenfield substation requiring precision mechanical and electrical work", solution: "Complete mechanical assembly, control systems setup, and structured cabling", outcome: "Operational within 6 months with zero safety incidents" },
 ];
 
 const stagger = {
@@ -50,14 +50,13 @@ const Portfolio = () => {
           >
             <motion.span variants={fadeUp} className="text-amber text-sm font-semibold uppercase tracking-wider inline-block">Portfolio</motion.span>
             <motion.h1 variants={fadeUp} className="text-4xl md:text-5xl font-heading text-primary-foreground mt-2">Our Work Speaks</motion.h1>
-            <motion.p variants={fadeUp} className="text-primary-foreground/70 mt-4 text-lg">A selection of projects that showcase our expertise and commitment to quality.</motion.p>
+            <motion.p variants={fadeUp} className="text-primary-foreground/70 mt-4 text-lg">A selection of projects that showcase our system integration expertise and commitment to delivering operational excellence.</motion.p>
           </motion.div>
         </div>
       </section>
 
       <section className="section-padding bg-background overflow-hidden">
         <div className="container">
-          {/* Filter */}
           <motion.div
             initial="hidden"
             whileInView="visible"

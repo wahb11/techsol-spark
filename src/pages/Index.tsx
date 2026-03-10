@@ -1,26 +1,25 @@
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { Monitor, Palette, Shield, Network, Server, Code, ArrowRight, CheckCircle, Zap, Users, Clock, Headphones } from "lucide-react";
+import { ShoppingCart, Wrench, Cpu, FlaskConical, Rocket, ArrowRight, CheckCircle, Zap, Users, Clock, Handshake } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const services = [
-  { icon: Code, title: "Web & App Development", desc: "Custom websites, web apps, and mobile solutions built with cutting-edge technologies." },
-  { icon: Palette, title: "Graphic Design", desc: "Brand identity, UI/UX design, marketing materials that captivate your audience." },
-  { icon: Shield, title: "CCTV & Security", desc: "Comprehensive surveillance and security systems for homes and businesses." },
-  { icon: Network, title: "Networking Solutions", desc: "Enterprise networking, structured cabling, and wireless infrastructure setup." },
-  { icon: Server, title: "IT Infrastructure", desc: "Server setup, cloud migration, and complete IT infrastructure management." },
-  { icon: Monitor, title: "IT Consultation", desc: "Expert guidance to align your technology strategy with business goals." },
+  { icon: ShoppingCart, title: "Procurement", desc: "Intelligent sourcing, vendor qualification, and supply chain management for the right components at the right price." },
+  { icon: Wrench, title: "Installation", desc: "Precision mechanical, electrical, and network infrastructure installation built to the highest technical standards." },
+  { icon: Cpu, title: "System Integration", desc: "Bringing together hardware, software, and control systems into a unified, fully functional whole." },
+  { icon: FlaskConical, title: "Testing", desc: "Systematic FAT and SAT testing at every level — component, subsystem, and full system verification." },
+  { icon: Rocket, title: "Commissioning", desc: "Startup, calibration, validation, and structured handover so your system performs from day one." },
 ];
 
 const stats = [
-  { value: "150+", label: "Projects Delivered", icon: Zap },
-  { value: "50+", label: "Happy Clients", icon: Users },
-  { value: "8+", label: "Years Experience", icon: Clock },
-  { value: "24/7", label: "Support", icon: Headphones },
+  { value: "500+", label: "Successful Projects", icon: Zap },
+  { value: "15+", label: "Years Experience", icon: Clock },
+  { value: "100%", label: "End-to-End Accountability", icon: CheckCircle },
+  { value: "50+", label: "Trusted Partners", icon: Handshake },
 ];
 
 const stagger = {
@@ -90,31 +89,30 @@ const Index = () => {
               variants={fadeUp}
               className="inline-block px-4 py-1.5 rounded-full bg-accent/20 text-amber font-semibold text-sm mb-6 border border-accent/30 backdrop-blur-sm"
             >
-              Your Trusted Technology Partner
+              System Integration | Procurement | Installation | Commissioning
             </motion.span>
             <motion.h1
               variants={fadeUp}
               className="text-4xl md:text-5xl lg:text-6xl font-heading text-primary-foreground leading-tight"
             >
-              Innovative <span className="text-gradient">Tech Solutions</span> for Your Business
+              Engineering the Future. <span className="text-gradient">Integrating Today.</span>
             </motion.h1>
             <motion.p
               variants={fadeUp}
               className="mt-6 text-lg text-primary-foreground/75 leading-relaxed max-w-xl"
             >
-              From web development to security systems, we deliver end-to-end technology
-              solutions that drive growth and protect your business.
+              End-to-end system integration solutions — from procurement to commissioning — delivered with precision, expertise, and accountability.
             </motion.p>
             <motion.div variants={fadeUp} className="flex flex-wrap gap-4 mt-8">
-              <Link to="/contact">
+              <Link to="/services">
                 <Button size="lg" className="bg-accent text-accent-foreground hover:bg-amber-dark font-semibold text-base px-8 glow-amber group">
-                  Get Your Solution
+                  Explore Our Services
                   <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
-              <Link to="/services">
+              <Link to="/contact">
                 <Button size="lg" className="bg-primary-foreground text-primary font-semibold text-base px-8 hover:bg-primary-foreground/90">
-                  Our Services
+                  Get a Consultation
                 </Button>
               </Link>
             </motion.div>
@@ -129,7 +127,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Stats with animated counters */}
+      {/* Stats */}
       <section className="bg-accent relative">
         <div className="container py-10">
           <motion.div
@@ -140,11 +138,7 @@ const Index = () => {
             className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center"
           >
             {stats.map((stat) => (
-              <motion.div
-                key={stat.label}
-                variants={scaleIn}
-                className="group"
-              >
+              <motion.div key={stat.label} variants={scaleIn} className="group">
                 <stat.icon className="w-6 h-6 mx-auto mb-2 text-accent-foreground/60 group-hover:text-accent-foreground transition-colors" />
                 <div className="text-3xl md:text-4xl font-heading font-bold text-accent-foreground">{stat.value}</div>
                 <div className="text-sm text-accent-foreground/70 mt-1">{stat.label}</div>
@@ -165,20 +159,22 @@ const Index = () => {
               variants={stagger}
             >
               <motion.div variants={fadeLeft}>
-                <SectionHeading subtitle="Who We Are" title="Technology Solutions You Can Trust" centered={false} />
+                <SectionHeading subtitle="Who We Are" title="Complete System Integration Partner" centered={false} />
               </motion.div>
               <motion.p variants={fadeLeft} className="text-muted-foreground leading-relaxed mb-6">
-                TECHSOL is a leading technology solutions provider based in Rawalpindi, Pakistan.
-                We specialize in delivering comprehensive IT services including web development,
-                graphic design, CCTV installations, networking, and IT infrastructure management.
+                At TECHSOL, we don't just supply components — we build complete, fully operational systems.
+                Whether you're launching a new facility, upgrading critical infrastructure, or scaling your
+                operations, TECHSOL brings together the technical depth and project management excellence
+                to deliver integrated systems that perform from day one.
               </motion.p>
               <motion.ul variants={stagger} className="space-y-3 mb-8">
-                {["Certified & experienced IT professionals", "End-to-end project delivery", "24/7 dedicated support", "Competitive pricing"].map((item) => (
-                  <motion.li
-                    key={item}
-                    variants={fadeLeft}
-                    className="flex items-center gap-3 text-sm text-foreground group"
-                  >
+                {[
+                  "Single-source accountability from procurement to commissioning",
+                  "Cross-functional engineering expertise",
+                  "Structured project delivery with full documentation",
+                  "Long-term partnership and post-project support",
+                ].map((item) => (
+                  <motion.li key={item} variants={fadeLeft} className="flex items-center gap-3 text-sm text-foreground group">
                     <CheckCircle className="w-5 h-5 text-accent shrink-0 group-hover:scale-110 transition-transform" />
                     {item}
                   </motion.li>
@@ -202,20 +198,19 @@ const Index = () => {
               className="relative"
             >
               <div className="bg-primary rounded-2xl p-10 text-primary-foreground relative overflow-hidden">
-                {/* Decorative corner */}
                 <div className="absolute -top-10 -right-10 w-32 h-32 bg-accent/10 rounded-full blur-2xl" />
                 <div className="absolute -bottom-10 -left-10 w-24 h-24 bg-accent/5 rounded-full blur-xl" />
 
                 <h3 className="text-2xl font-heading mb-4 relative">Our Mission</h3>
                 <p className="text-primary-foreground/75 leading-relaxed mb-6 relative">
-                  To empower businesses with reliable, innovative technology solutions that enhance
-                  efficiency, security, and growth—while delivering exceptional customer care.
+                  To deliver complete, integrated systems that empower our clients' operations — through
+                  meticulous planning, expert execution, and full-cycle project accountability.
                 </p>
                 <div className="w-16 h-0.5 bg-accent/40 mb-6" />
                 <h3 className="text-2xl font-heading mb-4 relative">Our Vision</h3>
                 <p className="text-primary-foreground/75 leading-relaxed relative">
-                  To be Pakistan's most trusted technology partner, recognized for quality,
-                  innovation, and customer-centric service delivery.
+                  To be the most trusted system integration partner across industries — recognized for
+                  engineering excellence, reliability, and the seamless delivery of complex systems.
                 </p>
               </div>
             </motion.div>
@@ -235,7 +230,7 @@ const Index = () => {
             <SectionHeading
               subtitle="What We Do"
               title="Our Core Services"
-              description="We offer a complete range of technology solutions tailored to meet your business needs."
+              description="A fully integrated service model covering every phase of a system's lifecycle."
             />
           </motion.div>
           <motion.div
@@ -280,9 +275,28 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Testimonial */}
+      <section className="section-padding bg-background overflow-hidden">
+        <div className="container max-w-3xl text-center">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+            variants={stagger}
+          >
+            <motion.div variants={fadeUp} className="text-accent text-5xl font-heading mb-6">"</motion.div>
+            <motion.blockquote variants={fadeUp} className="text-lg md:text-xl text-foreground leading-relaxed italic mb-6">
+              TECHSOL took full ownership of our project from day one. Their team handled everything — procurement, installation, testing — and handed over a fully operational system ahead of schedule. They are the integration partner we didn't know we needed.
+            </motion.blockquote>
+            <motion.p variants={fadeUp} className="text-muted-foreground text-sm">
+              — Operations Director, Industrial Client
+            </motion.p>
+          </motion.div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="bg-primary section-padding relative overflow-hidden">
-        {/* Background decoration */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-10 left-[10%] w-32 h-32 border border-amber/10 rounded-full animate-float-slow" />
           <div className="absolute bottom-10 right-[10%] w-20 h-20 border border-amber/10 rounded-2xl rotate-45 animate-float" />
@@ -296,18 +310,11 @@ const Index = () => {
             viewport={{ once: true, margin: "-60px" }}
             variants={stagger}
           >
-            <motion.h2
-              variants={fadeUp}
-              className="text-3xl md:text-4xl font-heading text-primary-foreground mb-4"
-            >
-              Ready to Transform Your Business?
+            <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-heading text-primary-foreground mb-4">
+              Ready to Build Something Together?
             </motion.h2>
-            <motion.p
-              variants={fadeUp}
-              className="text-primary-foreground/70 max-w-xl mx-auto mb-8"
-            >
-              Let's discuss how TECHSOL can help you achieve your technology goals.
-              Get in touch for a free consultation.
+            <motion.p variants={fadeUp} className="text-primary-foreground/70 max-w-xl mx-auto mb-8">
+              Have a project in mind? Our team is ready to listen, assess, and propose the right solution for your requirements.
             </motion.p>
             <motion.div variants={scaleIn}>
               <Link to="/contact">
