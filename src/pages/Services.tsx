@@ -129,7 +129,7 @@ const Services = () => (
     {services.map((s, idx) => (
       <section key={s.title} className={`section-padding overflow-hidden ${idx % 2 === 0 ? "bg-background" : "bg-secondary"}`}>
         <div className="container">
-          <div className={`grid md:grid-cols-2 gap-12 items-start ${idx % 2 !== 0 ? "md:direction-rtl" : ""}`}>
+          <div className="grid md:grid-cols-2 gap-12 items-start">
             <motion.div
               initial="hidden"
               whileInView="visible"

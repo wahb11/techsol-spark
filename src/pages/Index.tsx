@@ -87,7 +87,7 @@ const Index = () => {
           >
             <motion.span
               variants={fadeUp}
-              className="inline-block px-4 py-1.5 rounded-full bg-accent/20 text-amber font-semibold text-sm mb-6 border border-accent/30 backdrop-blur-sm"
+              className="inline-block px-3 py-1.5 rounded-full bg-accent/20 text-amber font-semibold text-xs sm:text-sm mb-6 border border-accent/30 backdrop-blur-sm text-center leading-relaxed"
             >
               System Integration | Procurement | Installation | Commissioning
             </motion.span>
