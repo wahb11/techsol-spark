@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, MapPin, Phone, Facebook, Linkedin, Twitter } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import logo from "@/assets/logo.jpg";
 
 const Footer = () => (
@@ -47,21 +47,18 @@ const Footer = () => (
         <div>
           <h4 className="text-lg font-heading mb-4 text-amber">Contact Us</h4>
           <div className="space-y-3 text-sm">
-            <a href="mailto:info@techsol.com" className="flex items-start gap-2 text-primary-foreground/70 hover:text-amber transition-colors">
+            <a href="mailto:sales@techsol.com.pk" className="flex items-start gap-2 text-primary-foreground/70 hover:text-amber transition-colors">
               <Mail className="w-4 h-4 mt-0.5 shrink-0" />
-              info@techsol.com
+              sales@techsol.com.pk
+            </a>
+            <a href="tel:+924237871299" className="flex items-start gap-2 text-primary-foreground/70 hover:text-amber transition-colors">
+              <Phone className="w-4 h-4 mt-0.5 shrink-0" />
+              +92 42 37871299
             </a>
             <div className="flex items-start gap-2 text-primary-foreground/70">
               <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
               Office#24, A-15, NASTP Rawalpindi
             </div>
-          </div>
-          <div className="flex gap-3 mt-4">
-            {[Facebook, Linkedin, Twitter].map((Icon, i) => (
-              <a key={i} href="#" className="w-9 h-9 rounded-full bg-navy-light flex items-center justify-center hover:bg-accent transition-colors">
-                <Icon className="w-4 h-4" />
-              </a>
-            ))}
           </div>
         </div>
       </div>

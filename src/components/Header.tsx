@@ -22,9 +22,9 @@ const Header = () => {
       <div className="bg-primary text-primary-foreground">
         <div className="container flex items-center justify-between py-2 text-sm">
           <div className="flex items-center gap-4">
-            <a href="mailto:info@techsol.com" className="flex items-center gap-1.5 hover:text-amber transition-colors">
+            <a href="mailto:wahbusman@gmail.com" className="flex items-center gap-1.5 hover:text-amber transition-colors">
               <Mail className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">info@techsol.com</span>
+              <span className="hidden sm:inline">wahbusman@gmail.com</span>
             </a>
             <span className="hidden md:flex items-center gap-1.5">
               <MapPin className="w-3.5 h-3.5" />

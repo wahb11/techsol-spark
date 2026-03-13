@@ -51,7 +51,7 @@ const Contact = () => {
     const body = encodeURIComponent(
       `Name: ${form.name}\nCompany: ${form.company}\nEmail: ${form.email}\nPhone: ${form.phone}\nProject Type: ${form.service}\n\nMessage:\n${form.message}`
     );
-    window.location.href = `mailto:info@techsol.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:sales@techsol.com.pk?subject=${subject}&body=${body}`;
     toast({ title: "Opening your email client...", description: "Your inquiry is being prepared." });
   };
 
@@ -90,9 +90,9 @@ const Contact = () => {
               className="space-y-6"
             >
               {[
-                { icon: Mail, title: "Email Us", content: "info@techsol.com", href: "mailto:info@techsol.com" },
+                { icon: Mail, title: "Email Us", content: "sales@techsol.com.pk", href: "mailto:sales@techsol.com.pk" },
                 { icon: MapPin, title: "Visit Us", content: "Office#24, A-15, NASTP Rawalpindi" },
-                { icon: Phone, title: "Call Us", content: "Contact us via email for phone details" },
+                { icon: Phone, title: "Call Us", content: "+92 42 37871299", href: "tel:+924237871299" },
                 { icon: Clock, title: "Business Hours", content: "Mon–Fri: 8:00 AM – 6:00 PM\nSat: 9:00 AM – 1:00 PM" },
               ].map((item) => (
                 <motion.div
