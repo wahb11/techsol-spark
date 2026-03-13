@@ -48,12 +48,17 @@ const Contact = () => {
       toast({ title: "Please fill in required fields", variant: "destructive" });
       return;
     }
-    const subject = encodeURIComponent(`Inquiry: ${form.service || "General"} — ${form.name} (${form.company})`);
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nCompany: ${form.company}\nEmail: ${form.email}\nPhone: ${form.phone}\nProject Type: ${form.service}\n\nMessage:\n${form.message}`
-    );
-    window.location.href = `mailto:sales@techsol.com.pk?subject=${subject}&body=${body}`;
-    toast({ title: "Opening your email client...", description: "Your inquiry is being prepared." });
+
+    const to      = "sales@techsol.com.pk";
+    const subject = `Inquiry: ${form.service || "General"} — ${form.name}${form.company ? ` (${form.company})` : ""}`;
+    const body    = `Name: ${form.name}\nCompany: ${form.company || "N/A"}\nEmail: ${form.email}\nPhone: ${form.phone || "N/A"}\nProject Type: ${form.service || "General"}\n\nMessage:\n${form.message}`;
+
+    // Opens Gmail compose in a new tab with everything pre-filled
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(to)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.open(gmailUrl, "_blank");
+
+    toast({ title: "Gmail opened in a new tab!", description: "Just hit Send to submit your inquiry." });
+    setForm({ name: "", company: "", email: "", phone: "", service: "", message: "" });
   };
 
   return (
