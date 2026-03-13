@@ -40,6 +40,7 @@ const Footer = () => (
             <li>System Integration</li>
             <li>Testing</li>
             <li>Commissioning</li>
+            <li>Laptops &amp; Systems</li>
           </ul>
         </div>
 

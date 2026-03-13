@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { ShoppingCart, Wrench, Cpu, FlaskConical, Rocket, ArrowRight, CheckCircle, Zap, Users, Clock, Handshake } from "lucide-react";
+import { ShoppingCart, Wrench, Cpu, FlaskConical, Rocket, Monitor, ArrowRight, CheckCircle, Zap, Users, Clock, Handshake } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
@@ -13,6 +13,7 @@ const services = [
   { icon: Cpu, title: "System Integration", desc: "Bringing together hardware, software, and control systems into a unified, fully functional whole." },
   { icon: FlaskConical, title: "Testing", desc: "Systematic FAT and SAT testing at every level — component, subsystem, and full system verification." },
   { icon: Rocket, title: "Commissioning", desc: "Startup, calibration, validation, and structured handover so your system performs from day one." },
+  { icon: Monitor, title: "Laptops & Systems", desc: "Supply of laptops, desktops, and workstations — from individual units to bulk enterprise deployments, configured and ready to use." },
 ];
 
 const stats = [

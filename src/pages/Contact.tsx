@@ -13,6 +13,7 @@ const serviceOptions = [
   "System Integration",
   "Testing",
   "Commissioning",
+  "Laptops & Systems",
   "Full Project Scope",
   "Other",
 ];

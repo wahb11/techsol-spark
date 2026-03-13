@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ShoppingCart, Wrench, Cpu, FlaskConical, Rocket, ArrowRight } from "lucide-react";
+import { ShoppingCart, Wrench, Cpu, FlaskConical, Rocket, Monitor, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
@@ -71,6 +71,20 @@ const services = [
       "Operator training and knowledge transfer",
       "As-built documentation and O&M manuals",
       "Post-commissioning support",
+    ],
+  },
+  {
+    icon: Monitor,
+    title: "Laptops & Systems",
+    headline: "The Right Hardware for Every Requirement.",
+    body: "TECHSOL supplies a wide range of laptops, desktops, workstations, and computing systems tailored to your operational and business needs. From individual units to bulk enterprise deployments, we source from leading brands and ensure every system is configured, tested, and ready to use.",
+    capabilities: [
+      "Laptops, desktops, and workstations supply",
+      "Bulk enterprise and corporate procurement",
+      "Brand selection and specification guidance",
+      "Pre-delivery configuration and setup",
+      "Warranty management and after-sales support",
+      "Integration with existing IT infrastructure",
     ],
   },
 ];
