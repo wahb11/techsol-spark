@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
 import heroBg from "@/assets/hero-bg.jpg";
+import { stagger, staggerFast, fadeUp, fadeLeft, fadeRight, scaleIn, viewport, viewportLazy, tapScale } from "@/lib/animations";
 
 const services = [
   { icon: ShoppingCart, title: "Procurement", desc: "Intelligent sourcing, vendor qualification, and supply chain management for the right components at the right price." },
@@ -23,30 +24,6 @@ const stats = [
   { value: "50+", label: "Trusted Partners", icon: Handshake },
 ];
 
-const stagger = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.12 } },
-};
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
-};
-
-const fadeLeft = {
-  hidden: { opacity: 0, x: -50 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
-};
-
-const fadeRight = {
-  hidden: { opacity: 0, x: 50 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
-};
-
-const scaleIn = {
-  hidden: { opacity: 0, scale: 0.85 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" as const } },
-};
 
 const Index = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -134,12 +111,12 @@ const Index = () => {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
+            viewport={viewportLazy}
             variants={stagger}
             className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center"
           >
             {stats.map((stat) => (
-              <motion.div key={stat.label} variants={scaleIn} className="group">
+              <motion.div key={stat.label} variants={scaleIn} whileTap={tapScale} className="group">
                 <stat.icon className="w-6 h-6 mx-auto mb-2 text-accent-foreground/60 group-hover:text-accent-foreground transition-colors" />
                 <div className="text-3xl md:text-4xl font-heading font-bold text-accent-foreground">{stat.value}</div>
                 <div className="text-sm text-accent-foreground/70 mt-1">{stat.label}</div>
@@ -156,7 +133,7 @@ const Index = () => {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-80px" }}
+              viewport={viewport}
               variants={stagger}
             >
               <motion.div variants={fadeLeft}>
@@ -194,7 +171,7 @@ const Index = () => {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-80px" }}
+              viewport={viewport}
               variants={fadeRight}
               className="relative"
             >
@@ -225,7 +202,7 @@ const Index = () => {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
+            viewport={viewport}
             variants={fadeUp}
           >
             <SectionHeading
@@ -237,7 +214,7 @@ const Index = () => {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-40px" }}
+            viewport={viewportLazy}
             variants={stagger}
             className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
           >
@@ -246,6 +223,7 @@ const Index = () => {
                 key={service.title}
                 variants={scaleIn}
                 whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                whileTap={tapScale}
                 className="bg-card rounded-xl p-6 border border-border hover:border-accent/50 hover:shadow-xl hover:shadow-accent/5 transition-all duration-300 group cursor-pointer"
               >
                 <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent group-hover:shadow-lg group-hover:shadow-accent/20 transition-all duration-300">
@@ -262,7 +240,7 @@ const Index = () => {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={viewport}
             variants={fadeUp}
             className="text-center mt-10"
           >
@@ -282,7 +260,7 @@ const Index = () => {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
+            viewport={viewport}
             variants={stagger}
           >
             <motion.div variants={fadeUp} className="text-accent text-5xl font-heading mb-6">"</motion.div>
@@ -308,7 +286,7 @@ const Index = () => {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
+            viewport={viewport}
             variants={stagger}
           >
             <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-heading text-primary-foreground mb-4">

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { CheckCircle, Target, Eye, Heart, Award, Shield, Lightbulb, Users, Handshake, Settings } from "lucide-react";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
+import { stagger, fadeUp, fadeLeft, fadeRight, scaleIn, viewport, viewportLazy, tapScale } from "@/lib/animations";
 
 const values = [
   { icon: Award, title: "Technical Excellence", desc: "We bring deep expertise to every phase of every project." },
@@ -19,31 +20,6 @@ const differentiators = [
   { title: "Long-Term Partnership Mindset", desc: "Post-project support, system expansions, and ongoing technical assistance — because our goal is your system's continued success." },
   { title: "Adaptive & Industry-Agnostic", desc: "Oil & gas, manufacturing, utilities, telecommunications, or building infrastructure — we tailor our approach to your industry's demands." },
 ];
-
-const stagger = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.12 } },
-};
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
-};
-
-const fadeLeft = {
-  hidden: { opacity: 0, x: -50 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
-};
-
-const fadeRight = {
-  hidden: { opacity: 0, x: 50 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
-};
-
-const scaleIn = {
-  hidden: { opacity: 0, scale: 0.85 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" as const } },
-};
 
 const About = () => (
   <Layout>
@@ -79,7 +55,7 @@ const About = () => (
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
+            viewport={viewport}
             variants={stagger}
           >
             <motion.div variants={fadeLeft}>
@@ -102,23 +78,23 @@ const About = () => (
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
+            viewport={viewport}
             variants={stagger}
             className="grid grid-cols-2 gap-4"
           >
-            <motion.div variants={scaleIn} whileHover={{ y: -6, transition: { duration: 0.3 } }} className="bg-primary rounded-xl p-6 text-primary-foreground relative overflow-hidden group">
+            <motion.div variants={scaleIn} whileHover={{ y: -6, transition: { duration: 0.3 } }} whileTap={tapScale} className="bg-primary rounded-xl p-6 text-primary-foreground relative overflow-hidden group cursor-pointer">
               <div className="absolute -top-6 -right-6 w-20 h-20 bg-accent/10 rounded-full blur-xl group-hover:bg-accent/20 transition-colors" />
               <Target className="w-8 h-8 text-amber mb-3 relative" />
               <h3 className="font-heading text-lg mb-2 relative">Mission</h3>
               <p className="text-sm text-primary-foreground/70 relative">To deliver complete, integrated systems through meticulous planning and full-cycle accountability.</p>
             </motion.div>
-            <motion.div variants={scaleIn} whileHover={{ y: -6, transition: { duration: 0.3 } }} className="bg-accent rounded-xl p-6 text-accent-foreground relative overflow-hidden group">
+            <motion.div variants={scaleIn} whileHover={{ y: -6, transition: { duration: 0.3 } }} whileTap={tapScale} className="bg-accent rounded-xl p-6 text-accent-foreground relative overflow-hidden group cursor-pointer">
               <div className="absolute -top-6 -right-6 w-20 h-20 bg-primary/10 rounded-full blur-xl group-hover:bg-primary/20 transition-colors" />
               <Eye className="w-8 h-8 mb-3 relative" />
               <h3 className="font-heading text-lg mb-2 relative">Vision</h3>
               <p className="text-sm text-accent-foreground/80 relative">To be the most trusted system integration partner — recognized for engineering excellence.</p>
             </motion.div>
-            <motion.div variants={fadeUp} whileHover={{ y: -6, transition: { duration: 0.3 } }} className="col-span-2 bg-secondary rounded-xl p-6 relative overflow-hidden group">
+            <motion.div variants={fadeUp} whileHover={{ y: -6, transition: { duration: 0.3 } }} whileTap={tapScale} className="col-span-2 bg-secondary rounded-xl p-6 relative overflow-hidden group cursor-pointer">
               <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-accent/5 rounded-full blur-xl group-hover:bg-accent/10 transition-colors" />
               <Heart className="w-8 h-8 text-accent mb-3 relative" />
               <h3 className="font-heading text-lg mb-2 text-foreground relative">Core Values</h3>
@@ -135,7 +111,7 @@ const About = () => (
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
+          viewport={viewport}
           variants={fadeUp}
         >
           <SectionHeading subtitle="Our Values" title="What Drives Us" />
@@ -143,7 +119,7 @@ const About = () => (
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-40px" }}
+          viewport={viewportLazy}
           variants={stagger}
           className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6"
         >
@@ -152,6 +128,7 @@ const About = () => (
               key={v.title}
               variants={scaleIn}
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
+              whileTap={tapScale}
               className="bg-card rounded-xl p-6 border border-border text-center hover:border-accent/50 hover:shadow-xl hover:shadow-accent/5 transition-all duration-300 group"
             >
               <div className="w-14 h-14 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-accent group-hover:shadow-lg group-hover:shadow-accent/20 transition-all duration-300">
@@ -171,7 +148,7 @@ const About = () => (
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
+          viewport={viewport}
           variants={fadeUp}
         >
           <SectionHeading
@@ -183,7 +160,7 @@ const About = () => (
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-40px" }}
+          viewport={viewportLazy}
           variants={stagger}
           className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto"
         >
@@ -192,6 +169,7 @@ const About = () => (
               key={d.title}
               variants={scaleIn}
               whileHover={{ y: -6, transition: { duration: 0.3 } }}
+              whileTap={tapScale}
               className="bg-card rounded-xl p-6 border border-border hover:border-accent/40 hover:shadow-xl hover:shadow-accent/5 transition-all duration-300 group"
             >
               <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent transition-all duration-300">

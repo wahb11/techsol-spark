@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import Layout from "@/components/Layout";
 import SectionHeading from "@/components/SectionHeading";
+import { stagger, fadeUp, scaleIn, viewport, viewportLazy, tapScale } from "@/lib/animations";
 
 const categories = ["All", "System Integration", "Installation", "Procurement", "Commissioning"];
 
@@ -14,21 +15,6 @@ const projects = [
   { title: "Telecom Network Integration", category: "System Integration", challenge: "Multiple vendor equipment requiring unified management", solution: "IT/OT convergence, protocol integration, and custom network architecture", outcome: "Seamless data flow across 200+ endpoints" },
   { title: "Power Substation Installation", category: "Installation", challenge: "Greenfield substation requiring precision mechanical and electrical work", solution: "Complete mechanical assembly, control systems setup, and structured cabling", outcome: "Operational within 6 months with zero safety incidents" },
 ];
-
-const stagger = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.1 } },
-};
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
-};
-
-const scaleIn = {
-  hidden: { opacity: 0, scale: 0.85 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" as const } },
-};
 
 const Portfolio = () => {
   const [filter, setFilter] = useState("All");
@@ -57,17 +43,19 @@ const Portfolio = () => {
 
       <section className="section-padding bg-background overflow-hidden">
         <div className="container">
+          {/* Filter buttons */}
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={viewport}
             variants={fadeUp}
             className="flex flex-wrap gap-2 justify-center mb-10"
           >
             {categories.map((cat) => (
-              <button
+              <motion.button
                 key={cat}
                 onClick={() => setFilter(cat)}
+                whileTap={{ scale: 0.94 }}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                   filter === cat
                     ? "bg-accent text-accent-foreground shadow-lg shadow-accent/20"
@@ -75,7 +63,7 @@ const Portfolio = () => {
                 }`}
               >
                 {cat}
-              </button>
+              </motion.button>
             ))}
           </motion.div>
 
@@ -84,7 +72,7 @@ const Portfolio = () => {
               key={filter}
               initial="hidden"
               animate="visible"
-              exit={{ opacity: 0, y: 20 }}
+              exit={{ opacity: 0, y: 16, transition: { duration: 0.2 } }}
               variants={stagger}
               className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
             >
@@ -93,12 +81,20 @@ const Portfolio = () => {
                   key={project.title}
                   variants={scaleIn}
                   whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                  whileTap={tapScale}
                   layout
                   className="bg-card rounded-xl border border-border overflow-hidden hover:shadow-xl hover:shadow-accent/5 hover:border-accent/40 transition-all duration-300 group"
                 >
                   <div className="h-40 bg-primary relative overflow-hidden flex items-center justify-center">
                     <div className="absolute inset-0 bg-gradient-to-br from-primary via-navy-dark to-primary opacity-80" />
-                    <ExternalLink className="w-10 h-10 text-amber opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 relative z-10" />
+                    <motion.div
+                      initial={{ opacity: 0.4, scale: 1 }}
+                      whileHover={{ opacity: 1, scale: 1.15 }}
+                      transition={{ duration: 0.3 }}
+                      className="relative z-10"
+                    >
+                      <ExternalLink className="w-10 h-10 text-amber" />
+                    </motion.div>
                   </div>
                   <div className="p-5">
                     <span className="text-xs font-semibold text-accent uppercase tracking-wider">{project.category}</span>

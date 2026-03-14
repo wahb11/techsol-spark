@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import Layout from "@/components/Layout";
+import { stagger, fadeUp, fadeLeft, scaleIn, viewport, tapScale } from "@/lib/animations";
 
 const serviceOptions = [
   "Procurement",
@@ -18,25 +19,6 @@ const serviceOptions = [
   "Other",
 ];
 
-const stagger = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.12 } },
-};
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
-};
-
-const fadeLeft = {
-  hidden: { opacity: 0, x: -50 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
-};
-
-const scaleIn = {
-  hidden: { opacity: 0, scale: 0.85 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" as const } },
-};
 
 const Contact = () => {
   const { toast } = useToast();
@@ -91,7 +73,7 @@ const Contact = () => {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-60px" }}
+              viewport={viewport}
               variants={stagger}
               className="space-y-6"
             >
@@ -105,6 +87,7 @@ const Contact = () => {
                   key={item.title}
                   variants={fadeLeft}
                   whileHover={{ x: 6, transition: { duration: 0.2 } }}
+                  whileTap={tapScale}
                   className="bg-card rounded-xl p-6 border border-border hover:border-accent/40 hover:shadow-md transition-all duration-300 group"
                 >
                   <item.icon className="w-8 h-8 text-accent mb-3 group-hover:scale-110 transition-transform" />
@@ -124,7 +107,7 @@ const Contact = () => {
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-60px" }}
+              viewport={viewport}
               variants={scaleIn}
               className="lg:col-span-2"
             >
@@ -204,7 +187,7 @@ const Contact = () => {
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
+            viewport={viewport}
             variants={fadeUp}
             className="mt-12 text-center"
           >

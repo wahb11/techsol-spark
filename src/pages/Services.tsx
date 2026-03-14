@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { ShoppingCart, Wrench, Cpu, FlaskConical, Rocket, Monitor, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
+import { stagger, fadeUp, fadeLeft, fadeRight, scaleIn, viewport, viewportLazy, tapScale } from "@/lib/animations";
 import SectionHeading from "@/components/SectionHeading";
 
 const services = [
@@ -89,30 +90,6 @@ const services = [
   },
 ];
 
-const stagger = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.1 } },
-};
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
-};
-
-const fadeLeft = {
-  hidden: { opacity: 0, x: -50 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
-};
-
-const fadeRight = {
-  hidden: { opacity: 0, x: 50 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
-};
-
-const scaleIn = {
-  hidden: { opacity: 0, scale: 0.85 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: "easeOut" as const } },
-};
 
 const Services = () => (
   <Layout>
@@ -147,7 +124,7 @@ const Services = () => (
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-60px" }}
+              viewport={viewport}
               variants={stagger}
               className={idx % 2 !== 0 ? "md:order-2" : ""}
             >
@@ -171,7 +148,7 @@ const Services = () => (
             <motion.div
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-60px" }}
+              viewport={viewport}
               variants={stagger}
               className={idx % 2 !== 0 ? "md:order-1" : ""}
             >
@@ -182,6 +159,7 @@ const Services = () => (
                     key={cap}
                     variants={fadeUp}
                     whileHover={{ x: 6, transition: { duration: 0.2 } }}
+                    whileTap={tapScale}
                     className="flex items-start gap-3 bg-card p-4 rounded-lg border border-border hover:border-accent/40 hover:shadow-md transition-all duration-300"
                   >
                     <ArrowRight className="w-4 h-4 text-accent mt-0.5 shrink-0" />
@@ -204,7 +182,7 @@ const Services = () => (
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
+          viewport={viewport}
           variants={stagger}
         >
           <motion.h2 variants={fadeUp} className="text-3xl md:text-4xl font-heading text-primary-foreground mb-4">Need a Custom Solution?</motion.h2>
