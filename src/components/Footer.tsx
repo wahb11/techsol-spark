@@ -60,6 +60,10 @@ const Footer = () => (
               <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
               Office#24, A-15, NASTP Rawalpindi
             </div>
+            <div className="flex items-start gap-2 text-primary-foreground/70">
+              <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
+              1023-Nizam Block, Allama Iqbal Town, Lahore
+            </div>
           </div>
         </div>
       </div>

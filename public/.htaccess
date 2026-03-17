@@ -1,22 +1,20 @@
-# Disable MultiViews and Directory Listing (must be in ONE Options line)
-Options -MultiViews -Indexes
-
-# Enable Rewrite Engine
-RewriteEngine On
-RewriteBase /
-
-# Redirect HTTP to HTTPS (remove this block if your cPanel has no SSL)
-RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
 # -----------------------------------------------
-# React Router SPA Fallback
-# Serve index.html for any request that is NOT
-# a real file or directory on disk
+# React Router SPA – cPanel / Apache
 # -----------------------------------------------
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ /index.html [L,QSA]
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Redirect HTTP to HTTPS (remove if no SSL certificate)
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # SPA fallback – send every non-file/non-dir request to index.html
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.*)$ /index.html [L,QSA]
+</IfModule>
 
 # -----------------------------------------------
 # Gzip Compression

@@ -28,7 +28,7 @@ const Header = () => {
             </a>
             <span className="hidden md:flex items-center gap-1.5">
               <MapPin className="w-3.5 h-3.5" />
-              Office#24, A-15, NASTP Rawalpindi
+              1023-Nizam Block, Allama Iqbal Town, Lahore
             </span>
           </div>
           <span className="hidden lg:inline text-primary-foreground/60 text-xs">
