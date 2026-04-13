@@ -210,3 +210,91 @@
 .animate-shimmer-in {
   animation: shimmer-in 0.45s ease-out forwards;
 }
+
+/* ── Extra animation keyframes ───────────────────────────────────── */
+
+@keyframes orbit {
+  from { transform: rotate(0deg) translateX(14px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(14px) rotate(-360deg); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes draw-line {
+  from { stroke-dashoffset: 1000; }
+  to   { stroke-dashoffset: 0; }
+}
+
+@keyframes gradient-shift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes bounce-subtle {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
+}
+
+@keyframes scale-breathe {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.04); }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-orbit        { animation: orbit 6s linear infinite; }
+.animate-spin-slow    { animation: spin-slow 12s linear infinite; }
+.animate-bounce-subtle { animation: bounce-subtle 3s ease-in-out infinite; }
+.animate-scale-breathe { animation: scale-breathe 4s ease-in-out infinite; }
+.animate-fade-in-up   { animation: fade-in-up 0.6s cubic-bezier(0.22,1,0.36,1) forwards; }
+
+/* Gradient text animation */
+.text-gradient-animated {
+  background: linear-gradient(135deg, hsl(var(--amber)), hsl(var(--amber-light)), hsl(var(--amber)));
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 4s ease infinite;
+}
+
+/* Glowing border on hover */
+.glow-border-hover {
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.glow-border-hover:hover {
+  box-shadow: 0 0 0 2px hsl(var(--accent) / 0.4), 0 8px 32px hsl(var(--accent) / 0.12);
+}
+
+/* Timeline connector line animation */
+.timeline-line {
+  background: linear-gradient(to bottom, hsl(var(--accent)), hsl(var(--accent) / 0.3), transparent);
+}
+
+/* Smooth page transition layer */
+.page-transition-overlay {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+}
+
+/* Reduce motion — disable extra animations too */
+@media (prefers-reduced-motion: reduce) {
+  .animate-orbit,
+  .animate-spin-slow,
+  .animate-bounce-subtle,
+  .animate-scale-breathe {
+    animation: none;
+  }
+  .text-gradient-animated {
+    animation: none;
+  }
+}
