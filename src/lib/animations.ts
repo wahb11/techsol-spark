@@ -113,17 +113,28 @@ export const blurIn = {
 };
 
 /** Page-level transition — used by Layout's <motion.main> */
+/**
+ * Page transition strategy:
+ *  - EXITING page fades out (200ms)
+ *  - ENTERING page starts at full opacity (1) immediately
+ *
+ * Why initial must be opacity:1, NOT opacity:0:
+ * Even with duration:0, Framer Motion renders one frame at the `initial`
+ * value before transitioning to `animate`. If initial is opacity:0,
+ * IntersectionObserver fires during that invisible frame and marks all
+ * in-viewport elements as "already processed". Their whileInView animations
+ * complete invisibly, so the user sees no animations on the first scroll-down.
+ * Starting at opacity:1 eliminates this invisible frame entirely.
+ *
+ * The hero section and individual element entrance animations still provide
+ * the visual "page arriving" effect.
+ */
 export const pageVariants = {
-  initial: { opacity: 0, y: 18 },
-  animate: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] as const, when: "beforeChildren" as const },
-  },
+  initial: { opacity: 1 },             // new page is immediately visible
+  animate: { opacity: 1 },
   exit: {
     opacity: 0,
-    y: -14,
-    transition: { duration: 0.28, ease: "easeIn" as const },
+    transition: { duration: 0.2, ease: "easeIn" as const },
   },
 };
 
@@ -140,9 +151,12 @@ export const tapScale = { scale: 0.97 } as const;
 
 /**
  * Reliable direct-whileInView viewports.
- * Use these when every element has its own whileInView (no parent stagger needed).
+ * once: false → animations replay every time an element enters the viewport,
+ * including when scrolling back up.
+ * Low amount threshold ensures elements trigger as soon as a tiny sliver
+ * enters the viewport.
  */
-export const vp     = { once: false, amount: 0.07 } as const;
+export const vp     = { once: false, amount: 0.08 } as const;
 export const vpCard = { once: false, amount: 0.04 } as const;
 
 /** Shared bezier ease */

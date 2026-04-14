@@ -1,27 +1,19 @@
-import { ReactNode } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { ReactNode, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
-import { pageVariants } from "@/lib/animations";
 
 const Layout = ({ children }: { children: ReactNode }) => {
   const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, [location.pathname]);
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      <AnimatePresence mode="wait" initial={false}>
-        <motion.main
-          key={location.pathname}
-          className="flex-1"
-          variants={pageVariants}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-        >
-          {children}
-        </motion.main>
-      </AnimatePresence>
+      <main className="flex-1">{children}</main>
       <Footer />
     </div>
   );

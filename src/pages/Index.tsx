@@ -12,8 +12,8 @@ import heroBg from "@/assets/hero-bg.jpg";
 import { tapScale } from "@/lib/animations";
 import { servicesData } from "@/data/services";
 
-/* ─── shared viewport config (loose trigger, re-fires on scroll up) ─── */
-const vp = { once: false, amount: 0.07 } as const;
+/* ─── shared viewport config (re-fires on scroll up) ─── */
+const vp     = { once: false, amount: 0.08 } as const;
 const vpCard = { once: false, amount: 0.04 } as const;
 
 /* ─── reusable inline variants ────────────────────────────────────────── */
